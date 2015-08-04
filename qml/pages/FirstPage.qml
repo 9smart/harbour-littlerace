@@ -30,8 +30,8 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtWebKit 3.0
 import io.thp.pyotherside 1.3
-
 
 Page {
     id: page
@@ -40,25 +40,17 @@ Page {
         id:imgpy
          Component.onCompleted: {
              addImportPath(Qt.resolvedUrl('./')); // adds import path to the directory of the Python script
-             imgpy.importModule('code', function () { // imports the Python module
+             imgpy.importModule('scan', function () { // imports the Python module
                            });
       }
-//       onReceived:{
-//           console.log("OK!")
-//           busy.running = false
-//           webview.visible = true
-//       }
+
+      onReceived:{
+          busy.running = false;
+          webview.url = "http://127.0.0.1:8000/index.html"
+          webview.visible = true;
+      }
     }
 
-    Timer{
-        interval: 10000;
-        running: true;
-        repeat: false
-        onTriggered:{
-            busy.running = false;
-            webview.visible = true;
-        }
-    }
 
     BusyIndicator {
         id:busy
@@ -67,20 +59,12 @@ Page {
         anchors.centerIn: parent
     }
 
-    SilicaWebView{
-
-        PullDownMenu{
-            MenuItem{
-                id:refresh
-                text:"Refresh"
-                onClicked: webview.reload
-            }
-        }
-
+     SilicaWebView{
         id:webview
         visible: false
         anchors.fill: parent
-        url: "http://127.0.0.1:8000/index.html"
+       // experimental.userAgent:"Qt; Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36  (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36"
+
     }
 }
 

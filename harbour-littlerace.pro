@@ -20,6 +20,7 @@ OTHER_FILES += qml/harbour-littlerace.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
     qml/pages/code.py \
+    qml/pages/scan.py \
     rpm/harbour-littlerace.changes.in \
     rpm/harbour-littlerace.spec \
     rpm/harbour-littlerace.yaml \

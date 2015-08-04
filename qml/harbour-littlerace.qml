@@ -30,11 +30,19 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import io.thp.pyotherside 1.3
 import "pages"
 
 ApplicationWindow
 {
-
+    Python{
+        id:webpy
+         Component.onCompleted: {
+             addImportPath(Qt.resolvedUrl('./pages')); // adds import path to the directory of the Python script
+             webpy.importModule('code', function () { // imports the Python module
+                           });
+      }
+    }
     initialPage: Component {
 
         FirstPage { }
