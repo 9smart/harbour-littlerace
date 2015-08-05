@@ -59,11 +59,22 @@ Page {
         anchors.centerIn: parent
     }
 
-     SilicaWebView{
+     WebView{
         id:webview
         visible: false
         anchors.fill: parent
        // experimental.userAgent:"Qt; Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36  (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36"
+
+        Button{
+            id:exit
+            text:"Double click Quit"
+            onDoubleClicked: Qt.quit()
+            anchors{
+                bottom: parent.bottom
+                bottomMargin: Theme.paddingMedium
+                horizontalCenter: parent.horizontalCenter
+            }
+        }
 
     }
 }

@@ -45,7 +45,13 @@ int main(int argc, char *argv[])
     //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
     //
     // To display the view, call "show()" (will show fullscreen on device).
+    QGuiApplication* app = SailfishApp::application(argc, argv);
+    QQuickView* view = SailfishApp::createView();
+    view->setSource(SailfishApp::pathTo("qml/harbour-littlerace.qml"));
+    view->show();
+    QObject::connect((QObject*)view->engine(), SIGNAL(quit()), app, SLOT(quit()));
 
-    return SailfishApp::main(argc, argv);
+    return app->exec();
+   //return SailfishApp::main(argc, argv);
 }
 
