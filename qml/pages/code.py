@@ -25,7 +25,8 @@ def scan():
     sk.close()
     return flag
 
-if __name__ == '__main__':
+def start():
     if not scan():
         os.chdir("/usr/share/harbour-littlerace/qml/pages")
         start_server()
+start()
