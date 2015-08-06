@@ -9,4 +9,5 @@ Name=LTTH:Arcade
 #
 # Remember to comment out the following line, if you do not want to use
 # a different app name in German locale (de).
+Name[de]=harbour-littlerace
 Name[zh]=小小东方:游乐场

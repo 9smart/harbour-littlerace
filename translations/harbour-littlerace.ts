@@ -4,7 +4,8 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <source>My Cover</source>
+        <source>Little Touhou
+[- Arcade -]</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
