@@ -106,18 +106,20 @@ Page {
 
      Page{
          id:aboutPage
-         SilicaFlickable{
-             anchors.centerIn: parent
-             contentHeight: label.height
-             Label{
-                 id:label
-                 text:"A demo of web html5 test <br/>"+
-                      " you can use this web server to run some html5 apps,"+
-                      "This app use 9527 port at first,if this port is used,it will"+
-                      " use port between 9000 and 50000.<br/>"+
-                      "Just have fun ;)"
-                 anchors.centerIn: parent
+         Label{
+             id:label
+             text:" A demo of web html5 test <br/>"+
+                  " You can use this web server to run some html5 apps,"+
+                  "This app use 9527 port at first,if this port is used,it will"+
+                  " use port between 9000 and 50000.<br/>"+
+                  "Just have fun ;)"
+             wrapMode: Text.WordWrap
+             anchors{
+                 centerIn: parent
              }
+
+             width: parent.width - Theme.paddingMedium
+
          }
      }
 }
