@@ -38,5 +38,3 @@ CoverBackground {
         text:qsTr("Little Touhou\n[- Arcade -]")
     }
 }
-
-
