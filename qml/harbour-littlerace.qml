@@ -35,12 +35,19 @@ import "pages"
 
 ApplicationWindow
 {
+    id:app
+    property string port:"9527"
     Python{
         id:webpy
          Component.onCompleted: {
              addImportPath(Qt.resolvedUrl('./pages')); // adds import path to the directory of the Python script
              webpy.importModule('code', function () { // imports the Python module
                            });
+      }
+      onReceived:{
+          if(data.toString() != "OK"){
+            port=data.toString();
+          }
       }
     }
     initialPage: Component {
@@ -49,5 +56,3 @@ ApplicationWindow
     }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 }
-
-

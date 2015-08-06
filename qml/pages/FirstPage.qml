@@ -39,15 +39,31 @@ Page {
     Python{
         id:imgpy
          Component.onCompleted: {
-             addImportPath(Qt.resolvedUrl('./')); // adds import path to the directory of the Python script
-             imgpy.importModule('scan', function () { // imports the Python module
-                           });
+             console.log(app.port)
+             addImportPath(Qt.resolvedUrl('./'));
+             imgpy.importModule('scan',function () {
+                 imgpy.startScan();
+              });
+
+
       }
 
+         function startScan(){
+             imgpy.call('scan.scanPort',[app.port],function(result){
+                       });
+         }
+
       onReceived:{
-          busy.running = false;
-          webview.url = "http://127.0.0.1:8000/index.html"
-          webview.visible = true;
+          console.log(data.toString())
+          if(data.toString() == "OK"){
+            busy.running = false;
+            //webview.url = "http://127.0.0.1:"+app.port+"/index.html"
+               var url = "http://127.0.0.1:"+app.port.toString();
+              console.log(url)
+               webview.visible = true;
+              webview.url =url
+            console.log(webview.url)
+          }
       }
     }
 
@@ -65,16 +81,26 @@ Page {
         anchors.fill: parent
        // experimental.userAgent:"Qt; Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36  (KHTML, like Gecko) Chrome/32.0.1667.0 Safari/537.36"
 
-        Button{
-            id:exit
-            text:"Double click Quit"
-            onDoubleClicked: Qt.quit()
-            anchors{
-                bottom: parent.bottom
-                bottomMargin: Theme.paddingMedium
-                horizontalCenter: parent.horizontalCenter
-            }
+        Row {
+                id:footItem
+                spacing: Theme.paddingLarge
+                anchors{
+                    bottom: parent.bottom
+                    horizontalCenter: parent.horizontalCenter
+                    bottomMargin: Theme.paddingMedium
+                }
+                Button{
+                  id:about
+                  text:"About"
+                  onClicked:{
+                      //
+                  }
+                }
+                Button{
+                    id:exit
+                    text:"Double click to Quit"
+                    onDoubleClicked: Qt.quit()
+                }
         }
-
     }
 }
