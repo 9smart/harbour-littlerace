@@ -12,7 +12,7 @@ def randomport():
     pflag = scan(port)
     #如果端口开启,则更换随机端口
     while (pflag):
-        port = random.randint(9000,5000)
+        port = random.randint(9000,50000)
         pflag = scan(port)
     return port
 

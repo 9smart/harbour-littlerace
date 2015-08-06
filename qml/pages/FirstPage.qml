@@ -93,7 +93,7 @@ Page {
                   id:about
                   text:"About"
                   onClicked:{
-                      //
+                     pageStack.push(aboutPage)
                   }
                 }
                 Button{
@@ -103,4 +103,21 @@ Page {
                 }
         }
     }
+
+     Page{
+         id:aboutPage
+         SilicaFlickable{
+             anchors.centerIn: parent
+             contentHeight: label.height
+             Label{
+                 id:label
+                 text:"A demo of web html5 test <br/>"+
+                      " you can use this web server to run some html5 apps,"+
+                      "This app use 9527 port at first,if this port is used,it will"+
+                      " use port between 9000 and 50000.<br/>"+
+                      "Just have fun ;)"
+                 anchors.centerIn: parent
+             }
+         }
+     }
 }
